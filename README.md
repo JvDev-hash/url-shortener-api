@@ -1,7 +1,7 @@
 # API Url Shortener
 
 ## Sobre
-Esta é uma API que tem o objetivo de gerenciar usuários, cursos, matrículas, aulas e vídeos. São utilizadas as tecnologias:
+Esta é uma API que tem o objetivo de Encurtar URLs. São utilizadas as tecnologias:
 
 - Java 11
 - Maven 3+
