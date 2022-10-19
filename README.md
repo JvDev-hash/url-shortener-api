@@ -16,3 +16,8 @@ Para execução do projeto basta entrar na pasta raiz do projeto e executar `mvn
 Obs: Para a execução do projeto é necessário que algumas IDEs tenham o plugin do **Lombok**, abaixo segue a instalação do plugin:
 
 - [IntelliJ IDEA / Eclipse](https://www.baeldung.com/lombok-ide)
+
+## Utilização
+
+- `[POST] localhost:8080/api/v1/create-short` - Endpoint de Criação da url encurtada, passando no corpo `longUrl` com a url longa;
+- `[GET] localhost:8080/api/v1/{url-curta}` - Endpoint de Acesso à url curta que redirecionará para a url original;
