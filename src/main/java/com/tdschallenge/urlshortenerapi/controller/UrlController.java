@@ -7,8 +7,10 @@ import com.tdschallenge.urlshortenerapi.dto.UrlLongRequest;
 import com.tdschallenge.urlshortenerapi.dto.UrlLongResponse;
 import com.tdschallenge.urlshortenerapi.dto.UrlShortResponse;
 import com.tdschallenge.urlshortenerapi.entity.Url;
+import com.tdschallenge.urlshortenerapi.service.PortProvider;
 import com.tdschallenge.urlshortenerapi.service.UrlService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,9 @@ import java.util.List;
 @RequestMapping("/shortener")
 public class UrlController {
 
+    @Autowired
+    private PortProvider portProvider;
+
     private final UrlService urlService;
 
     public UrlController(UrlService urlService) {
@@ -33,8 +38,9 @@ public class UrlController {
     public UrlShortResponse convertToShortUrl(@RequestBody UrlLongRequest request) {
         var urlResponse = new UrlShortResponse();
         var shortUrl = urlService.convertToShortUrl(request);
+        var serverPort = portProvider.getThePort();
 
-        urlResponse.setShortUrl("/shortener/" + shortUrl);
+        urlResponse.setShortUrl("localhost:" + serverPort + "/shortener/" + shortUrl);
         urlResponse.setCreatedDate(getActualDate());
         return urlResponse;
     }
@@ -57,10 +63,11 @@ public class UrlController {
     public List<UrlLongResponse> getAccessQtds() {
         var UrlsList = urlService.getAllUrls();
         var responseList = new ArrayList<UrlLongResponse>();
+        var serverPort = portProvider.getThePort();
 
         for(Url url : UrlsList){
             var tempResponse = new UrlLongResponse();
-            tempResponse.setShortUrl("/shortener/" + urlService.convertToShortUrl(url.getId()));
+            tempResponse.setShortUrl("localhost:" + serverPort + "/shortener/" + urlService.convertToShortUrl(url.getId()));
             tempResponse.setAccessQtd(url.getAccessQtd());
             responseList.add(tempResponse);
         }
