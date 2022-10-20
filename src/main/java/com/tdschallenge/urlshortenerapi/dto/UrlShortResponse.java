@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UrlLongRequest {
+public class UrlShortResponse {
 
-    private String longUrl;
+    private String shortUrl;
+
+    private String createdDate;
 }
