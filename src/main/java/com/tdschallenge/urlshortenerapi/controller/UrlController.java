@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/shortener")
 public class UrlController {
 
     private final UrlService urlService;
@@ -34,7 +34,7 @@ public class UrlController {
         var urlResponse = new UrlShortResponse();
         var shortUrl = urlService.convertToShortUrl(request);
 
-        urlResponse.setShortUrl(shortUrl);
+        urlResponse.setShortUrl("/shortener/" + shortUrl);
         urlResponse.setCreatedDate(getActualDate());
         return urlResponse;
     }
