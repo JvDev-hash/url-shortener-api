@@ -47,6 +47,12 @@ public class UrlController {
                 .build();
     }
 
+    @DeleteMapping(value = "{shortUrl}")
+    public ResponseEntity<Void> deleteUrl(@PathVariable String shortUrl){
+        urlService.deleteUrl(shortUrl);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
     @GetMapping(value = "statistics")
     public List<UrlLongResponse> getAccessQtds() {
         var UrlsList = urlService.getAllUrls();

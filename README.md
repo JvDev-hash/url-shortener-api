@@ -22,3 +22,4 @@ Obs: Em alguns casos é necessário que algumas IDEs tenham o plugin do **Lombok
 - `[POST] /shortener/create-short` - Endpoint de Criação da url encurtada, passando no corpo `longUrl` com a url longa;
 - `[GET] /shortener/{url-curta}` - Endpoint de Acesso à url curta que redirecionará para a url original;
 - `[GET] /shortener/statistics` - Endpoint de Acesso às estatísticas de quantos acessos às urls encurtadas;
+- `[DELETE] /shortener/{url-curta}` - Endpoint para deletar uma url encurtada;

@@ -42,6 +42,14 @@ public class UrlService {
         return entity.getLongUrl();
     }
 
+    public void deleteUrl(String shortUrl){
+        var id = conversion.decode(shortUrl);
+        var entity = urlRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("There is no entity with " + shortUrl));
+
+        urlRepository.delete(entity);
+    }
+
     public String convertToShortUrl(Long id){
         return conversion.encode(id);
     }
