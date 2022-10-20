@@ -60,7 +60,7 @@ public class UrlController {
 
         for(Url url : UrlsList){
             var tempResponse = new UrlLongResponse();
-            tempResponse.setShortUrl(urlService.convertToShortUrl(url.getId()));
+            tempResponse.setShortUrl("/shortener/" + urlService.convertToShortUrl(url.getId()));
             tempResponse.setAccessQtd(url.getAccessQtd());
             responseList.add(tempResponse);
         }
